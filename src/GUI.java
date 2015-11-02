@@ -1,9 +1,5 @@
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-
+import java.awt.event.*;
 import javax.swing.*;
 
 public class GUI {
@@ -71,6 +67,7 @@ public class GUI {
 		c.gridy = 4;
 		startButton.setBackground(new Color(214, 255, 255));
 		pane.add(startButton, c);
+		startButton.setEnabled(false);
 
 		textArea = new JTextArea();
 		c.fill = GridBagConstraints.HORIZONTAL;
@@ -80,6 +77,16 @@ public class GUI {
 		textArea.setBackground(new Color(235, 255, 255));
 		textArea.setEditable(false);
 		pane.add(textArea, c);
+		
+		extField.addKeyListener(new KeyAdapter() {
+	        public void keyReleased(KeyEvent e) {
+	            super.keyReleased(e);
+	            if(pathField.getText().length() > 0 && nameField.getText().length() >= 0 && extField.getText().length() > 0)
+	                startButton.setEnabled(true);
+	            else
+	            	startButton.setEnabled(false);
+	        }
+	    });
 
 		startButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

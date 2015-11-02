@@ -18,7 +18,7 @@ public class TVEpisodeOrganizer {
 			ext = "." + ext;
 		}
 		for (int i = 0; i < listOfFiles.length; i++) {
-		      listOfFiles[i].renameTo(new File(path+name+" - "+i+ext));
+		      listOfFiles[i].renameTo(new File(path+name+" - "+(i+1)+ext));
 		}
 		
 	}
